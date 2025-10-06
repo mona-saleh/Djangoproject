@@ -1,9 +1,6 @@
 from django.shortcuts import render
 
-def home(request):
-    return render(request, 'index.html')
-
-def books_home(request):
+def book_list(request):
     return render(request, 'books/index.html')
 
 def book1(request):

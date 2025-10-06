@@ -1,15 +1,20 @@
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Books List</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f9fa; }
+    h1 { color: #333; margin-top: 30px; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 15px 0; }
+    a { text-decoration: none; color: #0056b3; font-size: 18px; }
+    a:hover { color: #ff6600; }
+  </style>
 </head>
 <body>
   <h1>Books List</h1>
-  <nav>
-    <a href="{% url 'home' %}">Home</a>
-  </nav>
-
   <ul>
     <li><a href="{% url 'book1' %}">Introduction to Cybersecurity</a></li>
     <li><a href="{% url 'book2' %}">Networking Basics</a></li>
