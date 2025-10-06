@@ -1,4 +1,6 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from .models import Book
 
-def index(request):
-    return HttpResponse("📚 Bookmodule is working!")
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'book_list.html', {'books': books})
