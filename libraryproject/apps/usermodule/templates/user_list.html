@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>User List</title>
+  <meta charset="utf-8">
+  <title>User List</title>
 </head>
 <body>
-    <h1>👥 User List</h1>
-
-    <ul>
-        {% for user in users %}
-            <li>
-                <strong>{{ user.name }}</strong> — {{ user.email }} ({{ user.age }} years old)
-            </li>
-        {% empty %}
-            <li>No users found.</li>
-        {% endfor %}
-    </ul>
+  <h1>Users List</h1>
+  <p>This page displays the list of registered users (example only).</p>
+  <ul>
+    <li>Mona</li>
+    <li>Noura</li>
+    <li>Ghadeer</li>
+  </ul>
+  <a href="/">← Back to Home</a>
 </body>
 </html>

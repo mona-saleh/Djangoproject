@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Books List</title>
+</head>
+<body>
+  <h1>Books List</h1>
+  <nav>
+    <a href="{% url 'home' %}">Home</a>
+  </nav>
+
+  <ul>
+    <li><a href="{% url 'book1' %}">Introduction to Cybersecurity</a></li>
+    <li><a href="{% url 'book2' %}">Networking Basics</a></li>
+    <li><a href="{% url 'book3' %}">Web Development 101</a></li>
+  </ul>
+</body>
+</html>
