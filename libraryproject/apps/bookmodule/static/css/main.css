@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  background-color: #e5f0e5;
+  color: #2a6a2a;
+  padding: 10px;
+}
+
+a.block-link {
+  display: block;
+  background: #dff0d8;
+  color: #004d40;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #333;
+  text-decoration: none;
+}
+
+a.block-link:hover {
+  background: #c8e6c9;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 20px 0;
+}
+
+th, td {
+  border: 1px solid #aaa;
+  padding: 8px;
+}
+
+mark {
+  background: yellow;
+}

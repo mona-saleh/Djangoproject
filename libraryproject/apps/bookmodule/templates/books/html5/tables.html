@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tables</title>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <style>
+    table, th, td {
+      border: 1px solid gray;
+      border-collapse: collapse;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Table 1: Fruits and Prices</h2>
+  <table>
+    <tr><th>Fruit</th><th>Price</th></tr>
+    <tr><td>Apple</td><td>$0.25</td></tr>
+    <tr><td>Orange</td><td>$0.50</td></tr>
+    <tr><td>Banana</td><td>$1.00</td></tr>
+    <tr><td>Pineapple</td><td>$2.00</td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>$3.75</strong></td></tr>
+  </table>
+
+  <h2>Table 2: Camelid Comparison</h2>
+
+  <!-- هنا الصورة -->
+  <img src="{% static 'camel.jpg' %}" alt="Camel" width="250">
+  <p><strong>Approximate as of 6/2011</strong></p>
+
+  <table>
+    <tr>
+      <th># of humps</th>
+      <th>Indigenous region</th>
+      <th>Spits?</th>
+      <th>Produces wool?</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Arabian Peninsula</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Africa/Asia</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Andes Mountains</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+  </table>
+</body>
+</html>
