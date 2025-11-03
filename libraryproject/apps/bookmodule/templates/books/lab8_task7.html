@@ -1,0 +1,9 @@
+<h2>Number of Students per City</h2>
+<table border="1" cellpadding="6">
+  <tr><th>City</th><th>Students Count</th></tr>
+  {% for row in data %}
+    <tr><td>{{ row.address__city }}</td><td>{{ row.count }}</td></tr>
+  {% empty %}
+    <tr><td colspan="2">No data available</td></tr>
+  {% endfor %}
+</table>

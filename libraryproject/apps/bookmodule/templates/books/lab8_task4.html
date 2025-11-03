@@ -1,0 +1,8 @@
+<h2>Books Ordered by Title</h2>
+<ol>
+  {% for b in books %}
+    <li>{{ b.title }} — {{ b.author }}</li>
+  {% empty %}
+    <li>No data available</li>
+  {% endfor %}
+</ol>

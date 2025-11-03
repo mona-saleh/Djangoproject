@@ -1,0 +1,8 @@
+<h2>Books: edition > 3 and title/author contains "co"</h2>
+<ul>
+  {% for b in books %}
+    <li>{{ b.title }} — {{ b.author }} — edition={{ b.edition }}</li>
+  {% empty %}
+    <li>No data available</li>
+  {% endfor %}
+</ul>

@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from .models import Book
+from django.shortcuts import render
+from django.db.models import Q, Count, Sum, Avg, Max, Min
+from .models import Book, Student, Address
 def links_page(request):
     return render(request, 'books/html5/links.html')
 
@@ -55,3 +58,51 @@ def complex_query(request):
         return render(request, 'bookList.html', {'books': mybooks})
     else:
         return render(request, 'index.html')
+    
+    # Task 1: كتب سعرها <= 80 باستخدام Q
+def lab8_task1(request):
+    books = Book.objects.filter(Q(price__lte=80))
+    return render(request, 'books/lab8_task1.html', {'books': books})
+
+# Task 2: edition > 3 و (العنوان أو المؤلف يحتوي "co")
+def lab8_task2(request):
+    books = Book.objects.filter(
+        Q(edition__gt=3) & (Q(title__icontains='co') | Q(author__icontains='co'))
+    )
+    return render(request, 'books/lab8_task2.html', {'books': books})
+
+# Task 3: عكس 2 باستخدام ~
+def lab8_task3(request):
+    books = Book.objects.filter(
+        ~Q(edition__gt=3) & (~Q(title__icontains='co') | ~Q(author__icontains='co'))
+    )
+    return render(request, 'books/lab8_task3.html', {'books': books})
+
+# Task 4: ترتيب حسب العنوان
+def lab8_task4(request):
+    books = Book.objects.all().order_by('title')
+    return render(request, 'books/lab8_task4.html', {'books': books})
+
+# Task 5: تجميع (عدد/مجموع/متوسط/أعلى/أدنى سعر)
+def lab8_task5(request):
+    metrics = Book.objects.aggregate(
+        books_count=Count('id'),
+        total_price=Sum('price'),
+        avg_price=Avg('price'),
+        max_price=Max('price'),
+        min_price=Min('price'),
+    )
+    return render(request, 'books/lab8_task5.html', {'metrics': metrics})
+
+# Task 7: عدد الطلاب في كل مدينة
+def lab8_task7(request):
+    data = (
+        Student.objects
+        .values('address__city')
+        .annotate(count=Count('id'))
+        .order_by('address__city')
+    )
+    return render(request, 'books/lab8_task7.html', {'data': data})
+
+def home(request):
+    return render(request, 'books/home.html')
