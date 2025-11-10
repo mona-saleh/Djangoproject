@@ -106,3 +106,52 @@ def lab8_task7(request):
 
 def home(request):
     return render(request, 'books/home.html')
+
+
+from django.db.models import F, Sum, Avg, Min, Max, Count, FloatField, ExpressionWrapper, Q
+from .models import BookLab9, Publisher
+
+# Task 1
+def lab9_task1(request):
+    books = BookLab9.objects.annotate(
+        availability=ExpressionWrapper((F('quantity') / 350.0) * 100, output_field=FloatField())
+    )
+    return render(request, 'books/lab9_task1.html', {'books': books})
+
+
+# Task 2
+def lab9_task2(request):
+    publishers = Publisher.objects.annotate(total_books=Sum('booklab9__quantity'))
+    return render(request, 'books/lab9_task2.html', {'publishers': publishers})
+
+
+# Task 3
+def lab9_task3(request):
+    publishers = Publisher.objects.annotate(oldest_book=Min('booklab9__pubdate'))
+    return render(request, 'books/lab9_task3.html', {'publishers': publishers})
+
+
+# Task 4
+def lab9_task4(request):
+    publishers = Publisher.objects.annotate(
+        avg_price=Avg('booklab9__price'),
+        min_price=Min('booklab9__price'),
+        max_price=Max('booklab9__price')
+    )
+    return render(request, 'books/lab9_task4.html', {'publishers': publishers})
+
+
+# Task 5
+def lab9_task5(request):
+    publishers = Publisher.objects.annotate(
+        high_rating_books=Count('booklab9', filter=Q(booklab9__rating__gte=4))
+    )
+    return render(request, 'books/lab9_task5.html', {'publishers': publishers})
+
+
+# Task 6
+def lab9_task6(request):
+    publishers = Publisher.objects.annotate(
+        filtered_books=Count('booklab9', filter=Q(booklab9__price__gt=50, booklab9__quantity__lt=5, booklab9__quantity__gte=1))
+    )
+    return render(request, 'books/lab9_task6.html', {'publishers': publishers})
